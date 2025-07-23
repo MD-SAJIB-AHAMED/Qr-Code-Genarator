@@ -3,7 +3,7 @@ let qr;
 function generateQRCode() {
   const qrText = document.getElementById("qrText").value;
   const qrCodeContainer = document.getElementById("qrCode");
-  qrCodeContainer.innerHTML = ""; // Clear previous
+  qrCodeContainer.innerHTML = ""; // পুরনো QR মুছে ফেলি
 
   if (qrText.trim().length === 0) {
     alert("Please enter some text");
@@ -21,16 +21,16 @@ function generateQRCode() {
 }
 
 function downloadQRCode() {
-  if (!qr) {
-    alert("Please generate QR code first");
+  const canvas = document.querySelector("#qrCode canvas");
+
+  if (!canvas) {
+    alert("Please generate QR code first!");
     return;
   }
 
-  const img = document.querySelector("#qrCode img") || document.querySelector("#qrCode canvas");
-  if (img) {
-    const link = document.createElement("a");
-    link.href = img.src || img.toDataURL("image/png");
-    link.download = "qr_code.png";
-    link.click();
-  }
+  const imageData = canvas.toDataURL("image/png");
+  const link = document.createElement("a");
+  link.href = imageData;
+  link.download = "qr_code.png";
+  link.click();
 }
