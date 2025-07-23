@@ -1,36 +1,35 @@
-let qr;
+let currentText = "";
 
 function generateQRCode() {
-  const qrText = document.getElementById("qrText").value;
-  const qrCodeContainer = document.getElementById("qrCode");
-  qrCodeContainer.innerHTML = ""; // পুরনো QR মুছে ফেলি
+  const text = document.getElementById("qrText").value.trim();
+  const container = document.getElementById("qrCode");
+  container.innerHTML = "";
 
-  if (qrText.trim().length === 0) {
-    alert("Please enter some text");
-    return;
+  if (!text) {
+    return alert("Please enter some text!");
   }
 
-  qr = new QRCode(qrCodeContainer, {
-    text: qrText,
-    width: 200,
-    height: 200,
-    colorDark: "#000000",
-    colorLight: "#ffffff",
-    correctLevel: QRCode.CorrectLevel.H,
+  currentText = text;
+  const canvas = document.createElement("canvas");
+  container.appendChild(canvas);
+
+  QRCode.toCanvas(canvas, text, { width: 200 }, function(err) {
+    if (err) {
+      console.error(err);
+      return alert("QR generation failed!");
+    }
   });
 }
 
 function downloadQRCode() {
   const canvas = document.querySelector("#qrCode canvas");
-
   if (!canvas) {
-    alert("Please generate QR code first!");
-    return;
+    return alert("Generate a QR code first!");
   }
 
-  const imageData = canvas.toDataURL("image/png");
   const link = document.createElement("a");
-  link.href = imageData;
-  link.download = "qr_code.png";
+  const filename = currentText.replace(/[^a-z0-9]/gi, "_").slice(0,20) + ".png";
+  link.download = filename;
+  link.href = canvas.toDataURL("image/png");
   link.click();
 }

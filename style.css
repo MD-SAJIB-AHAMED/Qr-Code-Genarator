@@ -1,82 +1,39 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  color: white;
+  font-family:Segoe UI, sans-serif;
+  background: linear-gradient(135deg,#0f172a,#1e293b);
+  height:100vh; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; color:white;
 }
-
 .container {
-  padding: 30px;
-  border-radius: 16px;
-  text-align: center;
-  backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  transition: all 0.3s ease;
+  padding:30px; border-radius:16px; text-align:center;
+  backdrop-filter:blur(20px);
+  background:rgba(255,255,255,0.05);
+  box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
-
-h1 {
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: #38bdf8;
-}
-
+h1 { margin-bottom:20px; font-size:28px; color:#38bdf8; }
 input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  margin-bottom: 20px;
-  font-size: 16px;
-  outline: none;
+  width:100%; padding:12px; margin-bottom:20px;
+  border:none; border-radius:10px; font-size:16px;
+  outline:none;
 }
-
 .buttons {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 20px;
+  display:flex; gap:10px; justify-content:center; margin-bottom:20px;
 }
-
 button {
-  padding: 10px 20px;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  background: #38bdf8;
-  color: black;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  padding:10px 20px; background:#38bdf8;
+  border:none; border-radius:8px; font-weight:bold;
+  color:black; cursor:pointer;
+  transition:transform .2s, background .2s;
 }
-
 button:hover {
-  transform: scale(1.05);
-  background: #0ea5e9;
+  transform:scale(1.05); background:#0ea5e9;
 }
-
 #qrCode canvas {
-  margin-top: 10px;
-  border-radius: 12px;
+  margin-top:10px; border-radius:12px;
 }
-
 footer {
-  position: absolute;
-  bottom: 15px;
-  font-size: 14px;
-  color: #94a3b8;
+  position:absolute; bottom:15px;
+  font-size:14px; color:#94a3b8;
 }
-
-footer span {
-  color: #38bdf8;
-  font-weight: bold;
-}
+footer span { color:#38bdf8; font-weight:bold; }
